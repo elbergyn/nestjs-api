@@ -1,5 +1,4 @@
 import {
-  AllowNull,
   Column,
   DataType,
   Default,
@@ -7,6 +6,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
+import { ToNumber } from '../../common/db/to-number.decorator';
 
 @Table({
   tableName: 'accounts',
@@ -24,8 +24,12 @@ export class Account extends Model {
   @Column({ allowNull: false })
   name: string;
 
-  @Default(0)
-  @Column({ type: DataType.DECIMAL({ precision: 10, scale: 2 }) })
+  @ToNumber
+  @Default(0.0)
+  @Column({
+    type: DataType.DECIMAL({ precision: 10, scale: 2 }),
+    allowNull: false,
+  })
   balance: number;
 
   @Column({ allowNull: false })

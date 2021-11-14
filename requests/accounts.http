@@ -5,9 +5,8 @@ POST http://localhost:3000/accounts
 Content-Type: application/json
 
 {
-    "name": "",
-    "balance": 30,
-    "subdomain": ""
+    "name": "Account 1",
+    "subdomain": "tenant1"
 }
 
 

@@ -1,18 +1,23 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
-import { Column } from 'sequelize-typescript';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
+import { Column, DataType, Default, IsNull } from 'sequelize-typescript';
 
 export class CreateAccountDto {
   @IsString()
   @IsNotEmpty()
-  @MaxLength(255)
   name: string;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
+  @IsPositive()
   balance: number;
 
   @IsString()
   @IsNotEmpty()
-  @MaxLength(255)
   subdomain: string;
 }
